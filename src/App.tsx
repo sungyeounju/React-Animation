@@ -19,30 +19,46 @@ const Boxitem = styled(motion.div)`
   border-radius:25px;
   background-color:white;
 `
-const boxVariants = {
-  initial : {
-    opacity:0,
+const box = {
+  invisible : {
+    x: 500,
+    opacity: 0,
     scale:0
   },
   visible : {
-    opacity:1,
+    x: 0,
+    opacity: 1,
     scale:1,
-    rotateZ:360
+    transition : {
+      duration :1
+    }
   },
-  leaving : {
-    opacity:0,
-    y:50
+  exit:{
+    x: -500,
+    opacity: 0,
+    scale:0,
+    transition : {duration:1}
   }
 }
 
 function App() {
   const [visible, setVisible] = useState(1);
+  const [back, setBack] = useState(false);
   const nextPlease = () => setVisible((prev) => (prev === 10 ? 10 : prev+1))
   return (
     <Wrapper>
       <button onClick={nextPlease}>on Click!</button>
       <AnimatePresence>
-        {[1,2,3,4,5,6,7,8,9,10].map((i)=> i === visible ? (<Boxitem key={i}>{i}</Boxitem>) : null)}
+        {[1,2,3,4,5,6,7,8,9,10].map((i)=> 
+        i === visible ? (
+          <Boxitem
+            variants={box}
+            initial="invisible"
+            animate="visible"
+            exit="exit"
+            key={i}
+          >{i}</Boxitem>) 
+        : null)}
       </AnimatePresence>
     </Wrapper>
   );

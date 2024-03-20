@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { createGlobalStyle, styled } from 'styled-components';
-import ContBoxitem from './ContBoxitem';
+import React, { useEffect, useState } from "react";
+import { createGlobalStyle, styled } from "styled-components";
+import ContBoxitem from "./ContBoxitem";
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap')
 html, body, div, span, applet, object, iframe,
@@ -61,13 +61,13 @@ a{
   text-decoration:none;
   color:inherit;
 }
-`
+`;
 
 function App() {
   return (
     <>
-    <GlobalStyle />
-    <ContBoxitem></ContBoxitem>
+      <GlobalStyle />
+      <ContBoxitem></ContBoxitem>
     </>
   );
 }
